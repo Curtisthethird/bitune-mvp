@@ -1,0 +1,1 @@
+import {NextResponse} from 'next/server';import {cookies} from 'next/headers';import {deleteSession} from '@/lib/store';export async function POST(){const c=await cookies();const id=c.get('bitune_session')?.value;await deleteSession(id);const r=NextResponse.json({ok:true});r.cookies.delete('bitune_session');return r}

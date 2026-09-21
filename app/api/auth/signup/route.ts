@@ -1,0 +1,3 @@
+import {NextResponse} from 'next/server';import {z} from 'zod';import {createArtist,createSession} from '@/lib/store';
+const S=z.object({email:z.string().email(),password:z.string().min(8).max(100),name:z.string().min(2).max(60)});
+export async function POST(r:Request){try{const x=S.parse(await r.json());const a=await createArtist(x.email,x.password,x.name);const s=await createSession(a.id);const res=NextResponse.json({ok:true});res.cookies.set('bitune_session',s.id,{httpOnly:true,sameSite:'lax',secure:process.env.NODE_ENV==='production',path:'/',maxAge:604800});return res}catch(e){return NextResponse.json({error:e instanceof Error&&e.message==='EMAIL_EXISTS'?'Email already registered':'Invalid signup information'},{status:400})}}

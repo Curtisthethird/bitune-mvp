@@ -1,0 +1,41 @@
+{
+  "artists": [
+    {
+      "id": "2f2b02ee-5ae2-4090-9be2-950f4e2a90ea",
+      "email": "brumfieldcurtis1996@gmail.com",
+      "passwordHash": "66882751-24b1-44eb-91fd-692b18ff9042:f733b5a26f67fae83f67de2ddf78d5f6a830a2fc39ff08e05b980916bc2d9e43fd9681d6dc5368847ef70043dc20e46b9af203df511a5fa3cfdea877b19000e7",
+      "name": "Curtis III",
+      "bio": "",
+      "createdAt": "2026-09-21T15:13:01.204Z"
+    }
+  ],
+  "tracks": [
+    {
+      "artistId": "2f2b02ee-5ae2-4090-9be2-950f4e2a90ea",
+      "title": "Offline",
+      "genre": "",
+      "audioUrl": "/uploads/6db071fc-2137-4557-9843-ce0d89ab5485.mp3",
+      "artworkUrl": "/uploads/0eff4849-601c-43fc-be3d-5ef7a1399dd2.PNG",
+      "id": "190dabe7-0408-4817-ba2d-54b6bfe55fc7",
+      "createdAt": "2026-09-21T15:13:29.865Z",
+      "verifiedPlays": 2,
+      "sats": 120
+    }
+  ],
+  "sessions": [
+    {
+      "id": "7bc62a73-bc5b-4dc0-bdc5-447f2c631da1",
+      "artistId": "2f2b02ee-5ae2-4090-9be2-950f4e2a90ea",
+      "expiresAt": 1790608381206
+    },
+    {
+      "id": "664346e9-4eba-4a52-9861-8046d11bb326",
+      "artistId": "2f2b02ee-5ae2-4090-9be2-950f4e2a90ea",
+      "expiresAt": 1790608576159
+    }
+  ],
+  "claims": [
+    "73c5cd09-61c6-49a4-b48a-c4696006af52",
+    "3b6b1067-085e-41f6-8506-fb3df818b161"
+  ]
+}
