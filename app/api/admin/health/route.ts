@@ -1,0 +1,1 @@
+import {NextResponse} from "next/server";export async function GET(){return NextResponse.json({service:"bitune",status:"ok",payments:"simulated",chainAnchoring:"simulated",nostr:"simulated",time:new Date().toISOString()})}

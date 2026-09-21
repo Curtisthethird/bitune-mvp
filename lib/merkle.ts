@@ -1,0 +1,1 @@
+import {createHash} from "node:crypto";const h=(x:string)=>createHash("sha256").update(x).digest("hex");export function merkleRoot(leaves:string[]){if(!leaves.length)return h("");let level=leaves.map(h);while(level.length>1){const n:string[]=[];for(let i=0;i<level.length;i+=2)n.push(h(level[i]+(level[i+1]??level[i])));level=n}return level[0]}

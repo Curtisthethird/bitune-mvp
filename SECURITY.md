@@ -1,0 +1,2 @@
+# BitTune Security Gate
+Real BTC must remain disabled until: secrets are production-managed; PostgreSQL transactions/idempotency replace local JSON; uploads are malware/type scanned and transcoded; rate limits/WAF are enabled; auth has email verification/reset and MFA for admins; PoE telemetry is server-enforced; withdrawal limits and reconciliation exist; Lightning implementation is independently reviewed; dependency/SAST scans pass; backup restore is tested; incident response and key rotation are documented.

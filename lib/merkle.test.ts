@@ -1,0 +1,1 @@
+import{describe,it,expect}from"vitest";import{merkleRoot}from"./merkle";describe("merkle",()=>it("is deterministic",()=>expect(merkleRoot(["a","b"])).toBe(merkleRoot(["a","b"]))))

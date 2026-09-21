@@ -1,0 +1,6 @@
+import {promises as fs} from "node:fs";import path from "node:path";import {createHash,randomUUID} from "node:crypto";import type {ObjectStorage,Mailer,LightningSettlement,ChainAnchor,SocialPublisher} from "./contracts";
+export class LocalObjectStorage implements ObjectStorage{async put(key:string,b:Uint8Array){const p=path.join(process.cwd(),"public","uploads",key);await fs.mkdir(path.dirname(p),{recursive:true});await fs.writeFile(p,b);return "/uploads/"+key}async remove(key:string){try{await fs.unlink(path.join(process.cwd(),"public","uploads",key))}catch{}}}
+export class ConsoleMailer implements Mailer{async send(to:string,subject:string,body:string){console.log("[BITUNE MAIL]",{to,subject,body})}}
+export class SimulatedLightning implements LightningSettlement{async credit(_a:string,_s:number,_r:string){return {settlementId:"sim_"+randomUUID(),status:"simulated" as const}}}
+export class SimulatedStacksAnchor implements ChainAnchor{async anchor(root:string,count:number){return {anchorId:"stx_sim_"+createHash("sha256").update(root+count).digest("hex").slice(0,24),status:"simulated" as const}}}
+export class SimulatedNostr implements SocialPublisher{async publish(kind:string,payload:Record<string,unknown>){return {eventId:"nostr_sim_"+createHash("sha256").update(kind+JSON.stringify(payload)).digest("hex").slice(0,24),status:"simulated" as const}}}
