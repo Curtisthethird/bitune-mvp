@@ -16,3 +16,7 @@ This is a functional alpha, not yet a safe public-money production system. Local
 
 ## Beta v2 additions
 Production interfaces for object storage, mail, Lightning settlement, Stacks anchoring and Nostr publishing; local/simulated adapters; PostgreSQL target schema; playback heartbeat endpoint; fraud scorer; Merkle batching utility; email verification/reset token primitives; health endpoint; CI workflow; and security launch gate. These are intentionally provider-neutral so they can be exercised at $0 before live credentials are connected.
+
+
+## Cryptographic PoE v3
+Added client P-256 identity, non-exportable private keys, signed ~5-second engagement heartbeats, server signature/identity verification, nonce replay defense, sequence and monotonic progression enforcement, timestamp/timing constraints, playing/visibility/volume/rate checks, incremental verified-time accumulation, 60-second qualification, a live PoE inspector, and protocol tests. See POE-INTEGRATION.md.

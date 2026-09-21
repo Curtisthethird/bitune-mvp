@@ -1,0 +1,6 @@
+export type ClientIdentity={publicKey:CryptoKey;privateKey:CryptoKey;publicJwk:JsonWebKey;listenerId:string};
+const enc=new TextEncoder();
+function hex(bytes:ArrayBuffer){return [...new Uint8Array(bytes)].map(x=>x.toString(16).padStart(2,"0")).join("")}
+export async function createIdentity():Promise<ClientIdentity>{const pair=await crypto.subtle.generateKey({name:"ECDSA",namedCurve:"P-256"},false,["sign","verify"]);const publicJwk=await crypto.subtle.exportKey("jwk",pair.publicKey);const digest=await crypto.subtle.digest("SHA-256",enc.encode(JSON.stringify(publicJwk)));return {publicKey:pair.publicKey,privateKey:pair.privateKey,publicJwk,listenerId:"did:bitune:"+hex(digest).slice(0,40)}}
+function canonical(x:any){return JSON.stringify({version:x.version,contentId:x.contentId,sessionId:x.sessionId,publicKeyJwk:x.publicKeyJwk,sequence:x.sequence,playbackPosition:Number(x.playbackPosition.toFixed(3)),playbackRate:Number(x.playbackRate.toFixed(3)),volume:Number(x.volume.toFixed(3)),visible:x.visible,playing:x.playing,clientTimestamp:x.clientTimestamp,nonce:x.nonce})}
+export async function signHeartbeat(identity:ClientIdentity,unsigned:any){const sig=await crypto.subtle.sign({name:"ECDSA",hash:"SHA-256"},identity.privateKey,enc.encode(canonical(unsigned)));return {...unsigned,signature:btoa(String.fromCharCode(...new Uint8Array(sig)))}}
